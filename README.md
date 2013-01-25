@@ -12,6 +12,7 @@ This puppet module installs a Solr server. This module has been tested with Solr
 	}
 
 Parameters list:
+
 	source_dir: Directory from where to get source files.
 	
 	home_dir: Home directory of the Solr server.
