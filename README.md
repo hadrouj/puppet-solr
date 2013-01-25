@@ -2,14 +2,14 @@ This puppet module installs a Solr server. This module has been tested with Solr
 
 
 #Install a Solr server
-		solr::server { 'my_server':
-		  source_dir    => '/tmp/solr',
-		  home_dir      => '/opt/solr',
-		  log_dir       => '/var/log/solr',
-		  user          => 'vagrant',
-		  group         => 'vagrant',
-		  java_options  => {'Setting Xmx' => '-Xmx64m'},
-		}
+	solr::server { 'my_server':
+	  source_dir    => '/tmp/solr',
+	  home_dir      => '/opt/solr',
+	  log_dir       => '/var/log/solr',
+	  user          => 'vagrant',
+	  group         => 'vagrant',
+	  java_options  => {'Setting JVM Xmx param' => '-Xmx64m'},
+	}
 
 Parameters list:
 	source_dir: Directory from where to get source files
