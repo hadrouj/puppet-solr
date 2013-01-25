@@ -1,0 +1,17 @@
+JAVA_HOME=/usr/lib/jvm/default-java
+
+JAVA_OPTIONS="-Dsolr.solr.home=<%= home_dir %>/solr"
+
+<% java_options.each do |key, value| %>
+# <%= key %>
+JAVA_OPTIONS="$JAVA_OPTIONS <%= value %>"
+
+<% end %>
+
+JETTY_HOME=<%= home_dir %>
+
+JETTY_USER=<%= user %>
+
+JETTY_GROUP=<%= group %>
+
+JETTY_LOGS=<%= log_dir %>
