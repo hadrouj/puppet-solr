@@ -12,10 +12,10 @@ This puppet module installs a Solr server. This module has been tested with Solr
 		}
 
 Parameters list:
-  source_dir: Directory from where to get source files
-  home_dir: Home directory of the Solr server
-  log_dir: Solr Log directory
-  user: system user that will own Solr home and log directory, and will run solr.
-  group: system group that will own Solr home and log directory.
-  java_options: list of java options to be passed as params to jetty server.
+	source_dir: Directory from where to get source files
+	home_dir: Home directory of the Solr server
+	log_dir: Solr Log directory
+	user: system user that will own Solr home and log directory, and will run solr.
+	group: system group that will own Solr home and log directory.
+	java_options: list of java options to be passed as params to jetty server.
   
