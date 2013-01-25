@@ -1,7 +1,7 @@
 This puppet module installs a Solr server. This module has been tested with Solr version 4.0
 
 
-#Install a Solr server
+#Usage
 	solr::server { 'my_server':
 	  source_dir    => '/tmp/solr',
 	  home_dir      => '/opt/solr',
