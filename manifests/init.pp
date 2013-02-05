@@ -9,7 +9,7 @@ define solr::server ($source_dir,
   file { '/opt/solr':
     ensure    => directory,
     recurse   => true,
-    source    => '/tmp/solr',
+    source    => $source_dir,
     owner     => $user,
     group     => $group,
     require   => Exec['uncompress_solr'],
