@@ -6,7 +6,7 @@ define solr::server ($source_dir,
                      $java_options  = {}
 ) {
 
-  file { '/opt/solr':
+  file { "${home_dir}":
     ensure    => directory,
     recurse   => true,
     source    => $source_dir,
@@ -15,21 +15,21 @@ define solr::server ($source_dir,
     require   => Exec['uncompress_solr'],
   }
 
-  file { '/var/log/solr':
+  file { "${log_dir}":
     ensure    => directory,
     owner     => $user,
     group     => $group,
-    require   => File['/opt/solr'],
+    require   => File[$home_dir],
   }
 
   #Configure logging
-  file { '/opt/solr/etc/jetty.xml':
+  file { "${home_dir}/etc/jetty.xml":
     ensure    => present,
     content   => template('solr/etc/jetty.xml.erb'),
     owner     => $user,
     group     => $group,
     mode      => 0644,
-    require   => File['/opt/solr'],
+    require   => File[$home_dir],
   }
 
   #Creates init.d script to start jetty
@@ -39,7 +39,7 @@ define solr::server ($source_dir,
     owner     => 'root',
     group     => 'root',
     mode      => 0755,
-    require   => File['/opt/solr'],
+    require   => File[$home_dir],
   }
 
   #Creates script to load environment variables
@@ -49,7 +49,7 @@ define solr::server ($source_dir,
     owner     => 'root',
     group     => 'root',
     mode      => 0644,
-    require   => File['/opt/solr'],
+    require   => File[$home_dir],
   }
 
   service { 'solr':
