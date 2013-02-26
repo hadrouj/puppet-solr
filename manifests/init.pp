@@ -1,9 +1,11 @@
 define solr::server ($source_dir,
-                     $home_dir      = '/opt/solr',
-                     $log_dir       = '/var/log/solr',
-                     $user          = 'solr',
-                     $group         = 'solr',
-                     $java_options  = {}
+                     $home_dir       = '/opt/solr',
+                     $log_dir        = '/var/log/solr',
+                     $user           = 'solr',
+                     $group          = 'solr',
+                     $enable_service = true,
+                     $ensure_service = undef,
+                    $java_options    = {}
 ) {
 
   file { "${home_dir}":
@@ -53,8 +55,8 @@ define solr::server ($source_dir,
   }
 
   service { 'solr':
-    enable    => true,
-    ensure    => running,
+    enable    => $enable_service,
+    ensure    => $ensure_service,
     hasstatus => false,
     status    => "ps aux | grep solr.solr.home=${home_dir}/solr | grep -v grep",
     require   => File['/etc/default/jetty'],
