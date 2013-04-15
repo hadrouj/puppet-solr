@@ -5,7 +5,7 @@ define solr::server ($source_dir,
                      $group          = 'solr',
                      $enable_service = true,
                      $ensure_service = undef,
-                    $java_options    = {}
+                     $java_options   = {}
 ) {
 
   file { "${home_dir}":
@@ -14,7 +14,6 @@ define solr::server ($source_dir,
     source    => $source_dir,
     owner     => $user,
     group     => $group,
-    require   => Exec['uncompress_solr'],
   }
 
   file { "${log_dir}":
@@ -59,7 +58,7 @@ define solr::server ($source_dir,
     ensure    => $ensure_service,
     hasstatus => false,
     status    => "ps aux | grep solr.solr.home=${home_dir}/solr | grep -v grep",
-    require   => File['/etc/default/jetty'],
+    require   => [File['/etc/default/jetty'], File['/etc/init.d/solr'],
   }
 
 }
