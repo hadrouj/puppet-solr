@@ -4,8 +4,8 @@ define solr::server ($source_dir,
                      $user           = 'solr',
                      $group          = 'solr',
                      $enable_service = true,
-                     $ensure_service = undef,
-                    $java_options    = {}
+                     $ensure_service = running,
+                     $java_options    = {}
 ) {
 
   file { "${home_dir}":
