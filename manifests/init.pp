@@ -14,7 +14,6 @@ define solr::server ($source_dir,
     source    => $source_dir,
     owner     => $user,
     group     => $group,
-    require   => Exec['uncompress_solr'],
   }
 
   file { "${log_dir}":
