@@ -5,7 +5,7 @@ define solr::server ($source_dir,
                      $group          = 'solr',
                      $enable_service = true,
                      $ensure_service = running,
-                     $java_options    = {}
+                     $java_options   = {}
 ) {
 
   file { "${home_dir}":
