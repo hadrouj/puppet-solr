@@ -58,7 +58,7 @@ define solr::server ($source_dir,
     ensure    => $ensure_service,
     hasstatus => false,
     status    => "ps aux | grep solr.solr.home=${home_dir}/solr | grep -v grep",
-    require   => File['/etc/default/jetty'],
+    require   => File['/etc/default/jetty', "${home_dir}/etc/jetty.xml"],
   }
 
 }
